@@ -15,14 +15,14 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         player = this.transform.gameObject;
-        animator = this.transform.GetChild(0).GetComponent<Animator>();
-        spriteRenderer = this.transform.GetChild(0).GetComponent<SpriteRenderer>(); 
+        animator = this.transform.GetComponent<Animator>();
+        spriteRenderer = this.transform.GetComponent<SpriteRenderer>(); 
         playerSpeed = 2.0f;
 
-        Camera cam = Camera.main;
-        cam.transform.SetParent(transform);
-        cam.transform.localPosition = new Vector3(0f, 0f, -2.5f);
-        cam.orthographicSize = 1.5f;
+        //Camera cam = Camera.main;
+        //cam.transform.SetParent(transform);
+        //cam.transform.localPosition = new Vector3(0f, 0f, -2.5f);
+        //cam.orthographicSize = 1.5f;
     }
 
     private void FixedUpdate()

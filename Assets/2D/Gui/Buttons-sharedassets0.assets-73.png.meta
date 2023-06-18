@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,13 +36,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,9 +51,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -115,18 +115,524 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 80
+        width: 114
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bfbf9c0a8f32c4429867fc728a2db54
+      internalID: 1655468043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_1
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 104
+        width: 124
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06b07c25e396cd64b8794d02eed7ab43
+      internalID: 1518410503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_2
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 134
+        width: 98
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73026e200ab4d7f4c8d439658c5285b1
+      internalID: -1039558961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_3
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 135
+        width: 108
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 872db69a50e73734987d1804344b6018
+      internalID: 1750562547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_4
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 136
+        width: 110
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52901a0b0c8b454aafdc6063e711cda
+      internalID: 138444873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_5
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 137
+        width: 112
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f59894638698f4b919fcbca6374fbf
+      internalID: 751993231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_6
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 139
+        width: 111
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2f12afa6192b9841b49532a939a2f36
+      internalID: 1345044861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_7
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 139
+        width: 110
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b607db058305c59408c23b47f0ef3fa1
+      internalID: -517547936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_8
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 139
+        width: 109
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d029102d0f26f248b5692014d1d4975
+      internalID: -1944187139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_9
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 142
+        width: 187
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eb18abb294bcb441a501fdc6751fa3a
+      internalID: -177000366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_10
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 145
+        width: 112
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e26c9c4ef72cc984baf8c916a3797111
+      internalID: 1687819804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_11
+      rect:
+        serializedVersion: 2
+        x: 1356
+        y: 0
+        width: 296
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d271aac95a98bdf46b0411b5d6505fc6
+      internalID: -1941974993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_12
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 96
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f98833053b0864841a1b6ba51558d1c4
+      internalID: -843707684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_13
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 79
+        width: 110
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b91956663cb1ee14992c8f5185b76c8b
+      internalID: -985488087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_14
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 78
+        width: 52
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcac4f310a03aa54a92fb5a118820ee4
+      internalID: -43288476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_15
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 90
+        width: 112
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c4f9076326896f4b8afa8f0bdd068d5
+      internalID: 1535257199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_16
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 92
+        width: 110
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88fab06969d216e4bb963b4fc0d7d118
+      internalID: 296140213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_17
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 24
+        width: 111
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 424dbc85029ca4e42b349fba523f9dbd
+      internalID: -545942021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_18
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 24
+        width: 110
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e71ce388bafc27408d7dc9dfe40d8d0
+      internalID: -594056850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_19
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 24
+        width: 109
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7419a2f8bd2a2e743b0b4a7be533b3dc
+      internalID: 1881938697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_20
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 30
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84338e804ea263e46831a8d8f3c5a7af
+      internalID: 625285549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_21
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 36
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 221408b87e1babf4ba632afea783ce0f
+      internalID: -641394672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons-sharedassets0.assets-73_22
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 5
+        width: 798
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4daa5e18743a3864fa7a924a0029202d
+      internalID: -1197580312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b02979388cd43f54989db34b60f6e329
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Buttons-sharedassets0.assets-73_0: 1655468043
+      Buttons-sharedassets0.assets-73_1: 1518410503
+      Buttons-sharedassets0.assets-73_10: 1687819804
+      Buttons-sharedassets0.assets-73_11: -1941974993
+      Buttons-sharedassets0.assets-73_12: -843707684
+      Buttons-sharedassets0.assets-73_13: -985488087
+      Buttons-sharedassets0.assets-73_14: -43288476
+      Buttons-sharedassets0.assets-73_15: 1535257199
+      Buttons-sharedassets0.assets-73_16: 296140213
+      Buttons-sharedassets0.assets-73_17: -545942021
+      Buttons-sharedassets0.assets-73_18: -594056850
+      Buttons-sharedassets0.assets-73_19: 1881938697
+      Buttons-sharedassets0.assets-73_2: -1039558961
+      Buttons-sharedassets0.assets-73_20: 625285549
+      Buttons-sharedassets0.assets-73_21: -641394672
+      Buttons-sharedassets0.assets-73_22: -1197580312
+      Buttons-sharedassets0.assets-73_3: 1750562547
+      Buttons-sharedassets0.assets-73_4: 138444873
+      Buttons-sharedassets0.assets-73_5: 751993231
+      Buttons-sharedassets0.assets-73_6: 1345044861
+      Buttons-sharedassets0.assets-73_7: -517547936
+      Buttons-sharedassets0.assets-73_8: -1944187139
+      Buttons-sharedassets0.assets-73_9: -177000366
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

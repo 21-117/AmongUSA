@@ -2,15 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
+    public static PlayerMove instance;
+
     GameObject player;
     Animator animator;
     private SpriteRenderer spriteRenderer;
-    float playerSpeed = 0f;
-
+    private float playerSpeed = 0f;
     private bool _isMove = false;
+    public bool _isButtonPressed = false;
+
+    void Awake()
+    {
+        if (instance != null) Destroy(instance);
+        instance = this;
+    }
 
     private void Start()
     {
@@ -53,9 +63,18 @@ public class PlayerMove : MonoBehaviour
                 spriteRenderer.flipX = false;
                 _isMove = true;
             }
+
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+            {
+                playerSpeed = 1.5f;
+            }
+            else
+            {
+                playerSpeed = 2f;
+            }
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !_isButtonPressed)
         {
             Vector3 dir = (Input.mousePosition - new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f)).normalized;
             transform.position += dir * playerSpeed * Time.deltaTime;
@@ -71,4 +90,5 @@ public class PlayerMove : MonoBehaviour
     {
         animator.SetBool("isMove", value);
     }
+
 }

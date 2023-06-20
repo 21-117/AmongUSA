@@ -60,11 +60,21 @@ public class NPCMove : MonoBehaviour
                     speed * Time.deltaTime);
             }
         }
+        else if(isDead)
+        {
+            DyingAnimation(isDead);
+        }
+
+
     }
 
     private void MoveAnimation(bool value)
     {
         animator.SetBool("isMove", value);
+    }
+    private void DyingAnimation(bool value)
+    {
+        animator.SetBool("isDead", value);
     }
 
 }

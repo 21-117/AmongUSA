@@ -14,7 +14,9 @@ public class PlayerMove : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float playerSpeed = 0f;
     private bool _isMove = false;
-    public bool _isButtonPressed = false;
+    public bool _isButtonPressed = false, _isKill = false;
+
+    public Transform targetTransform;
 
     void Awake()
     {
@@ -29,13 +31,15 @@ public class PlayerMove : MonoBehaviour
         spriteRenderer = this.transform.GetComponent<SpriteRenderer>(); 
         playerSpeed = 2.0f;
 
-        //Camera cam = Camera.main;
-        //cam.transform.SetParent(transform);
-        //cam.transform.localPosition = new Vector3(0f, 0f, -2.5f);
-        //cam.orthographicSize = 1.5f;
     }
 
     private void FixedUpdate()
+    {
+        MovingPlayer();
+
+    }
+
+    public void MovingPlayer()
     {
         _isMove = false;
 
@@ -74,6 +78,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+
         if (Input.GetMouseButton(0) && !_isButtonPressed)
         {
             Vector3 dir = (Input.mousePosition - new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f)).normalized;
@@ -83,7 +88,6 @@ public class PlayerMove : MonoBehaviour
         }
 
         MoveAnimation(_isMove);
-
     }
 
     private void MoveAnimation(bool value)

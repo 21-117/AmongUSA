@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,19 @@ public class UIButtonClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerExit(PointerEventData eventData)
     {
         PlayerMove.instance._isButtonPressed = false;
+    }
+
+    public void Button_Kill()
+    {
+        if (Player_Detector.instance._NpcEntered)
+        {
+            if (!Player_Detector.instance.npcs.GetComponentInParent<NPCMove>().isDead)
+            {
+                PlayerMove.instance._isKill = true;
+                PlayerMove.instance.transform.position = Player_Detector.instance.npcs.position;
+                Player_Detector.instance.npcs.GetComponentInParent<NPCMove>().isDead = true;
+            }
+        }
     }
 
 }

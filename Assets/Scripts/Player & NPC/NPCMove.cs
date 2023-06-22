@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// (위 + 아래, 좌 + 우) 랜덤 방향으로 패트롤 하기
-// 벽과 부딪히는 경우 계산
+// 지정 포인트로 왕복 하기
+
 public class NPCMove : MonoBehaviour
 {
     public float speed = 1.0f;
@@ -19,8 +19,8 @@ public class NPCMove : MonoBehaviour
 
     void Start()
     {
-        animator = this.transform.GetChild(0).GetComponent<Animator>();
-        spriteRenderer = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        animator = this.transform.GetComponent<Animator>();
+        spriteRenderer = this.transform.GetComponent<SpriteRenderer>();
     }
 
     void Update()

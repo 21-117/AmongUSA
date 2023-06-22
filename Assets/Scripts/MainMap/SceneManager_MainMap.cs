@@ -6,6 +6,7 @@ public class SceneManager_MainMap : MonoBehaviour
 {
     public GameObject introUI;
     private Animator introAmimator;
+    private float introAnimationTime = 7.5f;
     void Start()
     {
         introAmimator = introUI.transform.GetComponent<Animator>();
@@ -15,7 +16,7 @@ public class SceneManager_MainMap : MonoBehaviour
     IEnumerator IntroPlayOnAwake()
     {
         introUI.gameObject.SetActive(true);
-        yield return new WaitForSeconds(7.5f);
+        yield return new WaitForSeconds(introAnimationTime);
         introAmimator.enabled = false;
         introUI.gameObject.SetActive(false);
     }

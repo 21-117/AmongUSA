@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     private float playerSpeed = 0f;
     private bool _isMove = false;
     public bool _isButtonPressed = false, _isKill = false;
-
+    Vector3 velocity, next_velocity;
     public Transform targetTransform;
 
     void Awake()
@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviour
         animator = this.transform.GetComponent<Animator>();
         spriteRenderer = this.transform.GetComponent<SpriteRenderer>(); 
         playerSpeed = 2.0f;
-
+        velocity = Camera.main.transform.position;
     }
 
     private void FixedUpdate()
@@ -81,9 +81,16 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetMouseButton(0) && !_isButtonPressed)
         {
+            next_velocity = Input.mousePosition;
+            if (velocity.x - next_velocity.x < -450) { spriteRenderer.flipX = false; }
+            else if (velocity.x - next_velocity.x > -450) { spriteRenderer.flipX = true; }
+
+            Debug.Log(velocity.x - next_velocity.x);
+
             Vector3 dir = (Input.mousePosition - new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f)).normalized;
             transform.position += dir * playerSpeed * Time.deltaTime;
             _isMove = dir.magnitude != 0f;
+
 
         }
 

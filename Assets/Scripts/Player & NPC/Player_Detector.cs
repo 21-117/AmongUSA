@@ -8,7 +8,8 @@ public class Player_Detector : MonoBehaviour
 
     public bool _NpcEntered = false;
     public Transform npcs;
-    private List<Transform> npcsDir = new List<Transform>();
+    public List<Transform> npcsTransforms = new List<Transform>();
+    private List<float> distances = new List<float>();
     private float distance;
     void Awake()
     {
@@ -16,22 +17,33 @@ public class Player_Detector : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+
+    }
     private void FixedUpdate()
     {
-        if (npcsDir.Count > 0)
-        {
-            for (int i = 0; i < npcsDir.Count -1; i++)
-            {
-                distance = Vector3.Distance(this.transform.position, npcsDir[i].transform.position);
-            }
-        }
-
-        Debug.Log(distance);
-        //foreach (Transform t in npcsDir)
+        //if (npcsTransforms.Count > 0)
         //{
-        //    distance = Vector3.Distance(this.transform.position, t.transform.position);
-        //    Debug.Log(distance);
+        //    for (int i = 0; i < npcsTransforms.Count - 1; i++)
+        //    {
+        //        distances[i] = Vector3.Distance(this.transform.position, npcsTransforms[i].transform.position);
+                
+        //    }
+        //    for (int j = 0; j < distances.Count; j++)
+        //    {
+
+        //    }
         //}
+
+        if(npcsTransforms.Count == 0)
+        {
+            npcs = PlayerMove.instance.transform;
+        }
+        else if(npcsTransforms.Count != 0)
+        {
+            npcs = npcsTransforms[0].transform;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -41,7 +53,7 @@ public class Player_Detector : MonoBehaviour
             _NpcEntered = true;
             //npcs = other.transform;
             // 리스트에 npc 트랜스폼 추가
-            npcsDir.Add(npcs);
+            npcsTransforms.Add(other.transform);
         }
     }
 
@@ -51,9 +63,25 @@ public class Player_Detector : MonoBehaviour
         {
             _NpcEntered = false;
             //npcs = PlayerMove.instance.transform;
-            // 들어온 만큼 카운트가 늘었을 것이므로 들어온 수만큼 차감
-            npcsDir.RemoveAt(npcsDir.Count-1);
+            //들어온 만큼 카운트가 늘었을 것이므로 들어온 수만큼 차감
+            if (npcsTransforms.Count != 0)
+            {
+                npcsTransforms.RemoveAt(npcsTransforms.Count - 1);
+            }
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.GetComponent<NPCMove>() && other.GetComponent<NPCMove>().isDead)
+        {
+            for (int i = 0; i < npcsTransforms.Count; i++)
+            {
+                if (other.transform.name == npcs.name) npcsTransforms.Remove(other.transform);//npcsTransforms.Remove(other.transform);
+            }
+            
+        }
+
     }
 
 }

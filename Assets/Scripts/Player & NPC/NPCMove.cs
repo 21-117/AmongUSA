@@ -11,58 +11,78 @@ public class NPCMove : MonoBehaviour
     private float _waitCounter = 0f;
     private int _currentWaypointIndex = 0;
     private bool _waiting = false, _turn = false;
-    public bool isDead = false;
+    public bool isDead = false, isMoving = false;
+    SceneManager_MainMap sceneM;
 
     private SpriteRenderer spriteRenderer;
     public List<Transform> waypoints;
     Animator animator;
 
+    Vector3 velocity, next_velocity;
+
     void Start()
     {
         animator = this.transform.GetComponent<Animator>();
         spriteRenderer = this.transform.GetComponent<SpriteRenderer>();
+        sceneM = FindAnyObjectByType<SceneManager_MainMap>();
+        sceneM.NPC_COUNT++;
+        isMoving = true;
     }
 
     void Update()
     {
-
-        if (!isDead)
+        if (isMoving)
         {
-            if (_waiting)
-            {
-                MoveAnimation(false);
-                _waitCounter += Time.deltaTime;
-                if (_waitCounter < _waitTime)
-                    return;
-                _waiting = false;
-                if (!_turn) { _turn = true; spriteRenderer.flipX = false; }
-                else if (_turn) { _turn = false; spriteRenderer.flipX = true; }
-            }
-            else
-            {
-                MoveAnimation(true);
-            }
 
-            Transform wp = waypoints[_currentWaypointIndex];
-            if (Vector3.Distance(transform.position, wp.position) < 0.01f)
+            if (!isDead)
             {
-                transform.position = wp.position;
-                _waitCounter = 0f;
-                _waiting = true;
 
-                _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Count;
+                Transform wp = waypoints[_currentWaypointIndex];
+
+                if (_waiting)
+                {
+                    MoveAnimation(false);
+                    _waitCounter += Time.deltaTime;
+                    if (_waitCounter < _waitTime)
+                        return;
+                    _waiting = false;
+
+                    velocity = transform.position;
+                    next_velocity = wp.transform.position;
+                    if (velocity.x - next_velocity.x < 0) { _turn = true; spriteRenderer.flipX = false; }
+                    else if (velocity.x - next_velocity.x > 0) { _turn = false; spriteRenderer.flipX = true; }
+                }
+                else
+                {
+                    MoveAnimation(true);
+                }
+
+
+                if (Vector3.Distance(transform.position, wp.position) < 0.01f)
+                {
+                    transform.position = wp.position;
+                    _waitCounter = 0f;
+                    _waiting = true;
+
+                    _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Count;
+                }
+                else
+                {
+                    transform.position = Vector3.MoveTowards(
+                        transform.position,
+                        wp.position,
+                        speed * Time.deltaTime);
+                }
+
+
+
             }
-            else
+            else if (isDead)
             {
-                transform.position = Vector3.MoveTowards(
-                    transform.position,
-                    wp.position,
-                    speed * Time.deltaTime);
+                DyingAnimation(isDead);
+                isMoving = false;
+                sceneM.NPC_DEADCOUNT++;
             }
-        }
-        else if(isDead)
-        {
-            DyingAnimation(isDead);
         }
 
 

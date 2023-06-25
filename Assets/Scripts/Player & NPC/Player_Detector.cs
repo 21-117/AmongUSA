@@ -23,18 +23,7 @@ public class Player_Detector : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //if (npcsTransforms.Count > 0)
-        //{
-        //    for (int i = 0; i < npcsTransforms.Count - 1; i++)
-        //    {
-        //        distances[i] = Vector3.Distance(this.transform.position, npcsTransforms[i].transform.position);
-                
-        //    }
-        //    for (int j = 0; j < distances.Count; j++)
-        //    {
 
-        //    }
-        //}
 
         if(npcsTransforms.Count == 0)
         {
@@ -66,7 +55,7 @@ public class Player_Detector : MonoBehaviour
             //들어온 만큼 카운트가 늘었을 것이므로 들어온 수만큼 차감
             if (npcsTransforms.Count != 0)
             {
-                npcsTransforms.RemoveAt(npcsTransforms.Count - 1);
+                npcsTransforms.Remove(other.transform);
             }
         }
     }
@@ -75,11 +64,7 @@ public class Player_Detector : MonoBehaviour
     {
         if (other.GetComponent<NPCMove>() && other.GetComponent<NPCMove>().isDead)
         {
-            for (int i = 0; i < npcsTransforms.Count; i++)
-            {
-                if (other.transform.name == npcs.name) npcsTransforms.Remove(other.transform);//npcsTransforms.Remove(other.transform);
-            }
-            
+            npcsTransforms.Remove(other.transform);
         }
 
     }

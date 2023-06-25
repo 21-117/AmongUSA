@@ -19,14 +19,11 @@ public class UIButtonClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void Button_Kill()
     {
-        if (Player_Detector.instance._NpcEntered && Player_Detector.instance.npcsTransforms.Count != 0)
+        if (Player_Detector.instance.npcsTransforms.Count != 0)
         {
-            if (!Player_Detector.instance.npcs.GetComponent<NPCMove>().isDead)
-            {
-                PlayerMove.instance._isKill = true;
-                PlayerMove.instance.transform.position = Player_Detector.instance.npcs.position;
-                Player_Detector.instance.npcs.GetComponent<NPCMove>().isDead = true;
-            }
+            PlayerMove.instance._isKill = true;
+            PlayerMove.instance.transform.position = Player_Detector.instance.npcs.position;
+            Player_Detector.instance.npcs.GetComponent<NPCMove>().isDead = true;
         }
     }
     public void _EnterMainMap()

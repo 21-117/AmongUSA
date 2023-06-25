@@ -33,10 +33,8 @@ public class NPCMove : MonoBehaviour
     {
         if (isMoving)
         {
-
             if (!isDead)
             {
-
                 Transform wp = waypoints[_currentWaypointIndex];
 
                 if (_waiting)
@@ -57,7 +55,6 @@ public class NPCMove : MonoBehaviour
                     MoveAnimation(true);
                 }
 
-
                 if (Vector3.Distance(transform.position, wp.position) < 0.01f)
                 {
                     transform.position = wp.position;
@@ -73,9 +70,6 @@ public class NPCMove : MonoBehaviour
                         wp.position,
                         speed * Time.deltaTime);
                 }
-
-
-
             }
             else if (isDead)
             {
@@ -84,8 +78,6 @@ public class NPCMove : MonoBehaviour
                 sceneM.NPC_DEADCOUNT++;
             }
         }
-
-
     }
 
     private void MoveAnimation(bool value)

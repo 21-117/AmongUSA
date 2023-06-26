@@ -18,6 +18,8 @@ public class PlayerMove : MonoBehaviour
     Vector3 velocity, next_velocity;
     public Transform targetTransform;
 
+    AudioSource audioSource;
+
     void Awake()
     {
         if (instance != null) Destroy(instance);
@@ -31,11 +33,16 @@ public class PlayerMove : MonoBehaviour
         spriteRenderer = this.transform.GetComponent<SpriteRenderer>(); 
         playerSpeed = 2.0f;
         velocity = Camera.main.transform.position;
+        audioSource = this.transform.GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
     {
         MovingPlayer();
+        if (_isMove && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
 
     }
 
@@ -84,8 +91,6 @@ public class PlayerMove : MonoBehaviour
             next_velocity = Input.mousePosition;
             if (velocity.x - next_velocity.x < -450) { spriteRenderer.flipX = false; }
             else if (velocity.x - next_velocity.x > -450) { spriteRenderer.flipX = true; }
-
-            Debug.Log(velocity.x - next_velocity.x);
 
             Vector3 dir = (Input.mousePosition - new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f)).normalized;
             transform.position += dir * playerSpeed * Time.deltaTime;

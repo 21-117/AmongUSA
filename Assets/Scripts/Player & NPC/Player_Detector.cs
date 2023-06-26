@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Detector : MonoBehaviour
 {
     public static Player_Detector instance;
 
-    public bool _NpcEntered = false;
+    public bool _NpcEntered = false, _reportValue = false;
     public Transform npcs;
     public List<Transform> npcsTransforms = new List<Transform>();
     private List<float> distances = new List<float>();
     private float distance;
+    public Image report_Image;
     void Awake()
     {
         if (instance != null) Destroy(instance);
@@ -58,6 +60,13 @@ public class Player_Detector : MonoBehaviour
                 npcsTransforms.Remove(other.transform);
             }
         }
+
+        if (other.GetComponent<NPCMove>() && other.GetComponent<NPCMove>().isDead)
+        {
+            report_Image.color = new Color(1f, 1f, 1f, 0.2f);
+            _reportValue = false;
+        }
+
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -65,6 +74,8 @@ public class Player_Detector : MonoBehaviour
         if (other.GetComponent<NPCMove>() && other.GetComponent<NPCMove>().isDead)
         {
             npcsTransforms.Remove(other.transform);
+            report_Image.color = new Color(1f, 1f, 1f, 1f);
+            _reportValue = true;
         }
 
     }

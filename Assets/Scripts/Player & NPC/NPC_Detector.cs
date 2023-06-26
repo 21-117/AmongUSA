@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class NPC_Detector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    SceneManager_MainMap sceneM;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        sceneM = FindAnyObjectByType<SceneManager_MainMap>();
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.GetComponent<NPCMove>() && other.GetComponent<NPCMove>().isDead && this.transform.parent.name != other.name)
+        {
+            sceneM._CrewEnding = true;
+        }
+
     }
 }

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 public class SceneManager_MainMap : MonoBehaviour
 {
-    public GameObject introUI, imposterEnding;
+    public static SceneManager_MainMap instance;
+
+    public GameObject introUI, imposterEnding, crewEnding;
     private Animator introAmimator;
     private float introAnimationTime = 7.5f;
     private int npcCount, npcDead = 0;
@@ -13,6 +16,17 @@ public class SceneManager_MainMap : MonoBehaviour
     public TextMeshProUGUI killCountText;
     private bool _ImposterEnding;
     public bool _CrewEnding;
+
+    public AudioSource killSound;
+
+    public GameObject npcs, player;
+
+    private void Awake()
+    {
+        if (instance != null) Destroy(instance);
+        instance = this;
+    }
+
     void Start()
     {
         introAmimator = introUI.transform.GetComponent<Animator>();
@@ -30,15 +44,14 @@ public class SceneManager_MainMap : MonoBehaviour
             }
         }
 
-        if (!_CrewEnding)
+        if (_CrewEnding)
         {
-            //¸®Æý
             StartCoroutine(CrewEndingPlay());
-            _CrewEnding = true;
+            _CrewEnding = false;
         }
 
-        
     }
+
 
     public int NPC_DEADCOUNT
     {
@@ -76,14 +89,18 @@ public class SceneManager_MainMap : MonoBehaviour
     }
     IEnumerator CrewEndingPlay()
     {
-        imposterEnding.gameObject.SetActive(true);
-        yield return new WaitForSeconds(10f);
+        player.gameObject.SetActive(false);
+        npcs.gameObject.SetActive(false);
+        crewEnding.gameObject.SetActive(true);
+        yield return new WaitForSeconds(12f);
+
+        SceneManager.LoadScene(0);
         
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+//#if UNITY_EDITOR
+//            UnityEditor.EditorApplication.isPlaying = false;
+//#else
+//        Application.Quit();
+//#endif
         
     }
 

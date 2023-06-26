@@ -75,6 +75,7 @@ public class NPCMove : MonoBehaviour
             {
                 DyingAnimation(isDead);
                 isMoving = false;
+                this.transform.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
                 sceneM.NPC_DEADCOUNT++;
             }
         }

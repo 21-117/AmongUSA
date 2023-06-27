@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// 플레이어 기준 주변 NPC 감지하고 킬 리포트 버튼 비/활성화 처리
 public class Player_Detector : MonoBehaviour
 {
     public static Player_Detector instance;
@@ -10,8 +11,6 @@ public class Player_Detector : MonoBehaviour
     public bool _NpcEntered = false, _reportValue = false;
     public Transform npcs;
     public List<Transform> npcsTransforms = new List<Transform>();
-    private List<float> distances = new List<float>();
-    private float distance;
     public Image report_Image;
     void Awake()
     {
@@ -19,42 +18,35 @@ public class Player_Detector : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
-    {
-
-    }
+    // 크루원이 있을 시 0번째 대상 킬 npc로 지정
     private void FixedUpdate()
     {
-
-
-        if(npcsTransforms.Count == 0)
+        if (npcsTransforms.Count == 0)
         {
             npcs = PlayerMove.instance.transform;
         }
-        else if(npcsTransforms.Count != 0)
+        else if (npcsTransforms.Count != 0)
         {
             npcs = npcsTransforms[0].transform;
         }
     }
 
+    // NPC가 죽지 않았다면 리스트에 추가
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<NPCMove>() && !other.GetComponent<NPCMove>().isDead)
         {
             _NpcEntered = true;
-            //npcs = other.transform;
-            // 리스트에 npc 트랜스폼 추가
             npcsTransforms.Add(other.transform);
         }
     }
 
+    //NPC가 나갔다면 리스트에서 삭제, 만약 죽었다면 리포트 버튼 비활성화
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.GetComponent<NPCMove>())
         {
             _NpcEntered = false;
-            //npcs = PlayerMove.instance.transform;
-            //들어온 만큼 카운트가 늘었을 것이므로 들어온 수만큼 차감
             if (npcsTransforms.Count != 0)
             {
                 npcsTransforms.Remove(other.transform);
@@ -68,6 +60,8 @@ public class Player_Detector : MonoBehaviour
         }
 
     }
+
+    // 임포스터 자작 리폿을 위해 죽은 NPC 감지 하기
 
     private void OnTriggerStay2D(Collider2D other)
     {

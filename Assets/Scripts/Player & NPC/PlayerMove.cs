@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+// 플레이어 이동 제어 (키보드, 마우스) 사운드 처리
 public class PlayerMove : MonoBehaviour
 {
     public static PlayerMove instance;
 
-    GameObject player;
     Animator animator;
     private SpriteRenderer spriteRenderer;
     private float playerSpeed = 0f;
@@ -26,9 +26,9 @@ public class PlayerMove : MonoBehaviour
         instance = this;
     }
 
+
     private void Start()
     {
-        player = this.transform.gameObject;
         animator = this.transform.GetComponent<Animator>();
         spriteRenderer = this.transform.GetComponent<SpriteRenderer>(); 
         playerSpeed = 2.0f;
@@ -36,6 +36,7 @@ public class PlayerMove : MonoBehaviour
         audioSource = this.transform.GetComponent<AudioSource>();
     }
 
+    // 걷는 사운드 재생
     private void FixedUpdate()
     {
         MovingPlayer();
@@ -46,10 +47,14 @@ public class PlayerMove : MonoBehaviour
 
     }
 
+    // Input.GetAxis() 로 처리 시 플레이어가 미끄러지는 느낌이 발생하여 인게임과 다름
+    // 따라서 트랜스폼으로 플레이어 이동 제어
+
     public void MovingPlayer()
     {
         _isMove = false;
 
+        // 키보드 입력 제어
         if (!Input.GetMouseButton(0))
         {
             if (Input.GetKey(KeyCode.W))
@@ -75,6 +80,7 @@ public class PlayerMove : MonoBehaviour
                 _isMove = true;
             }
 
+            // 2개 이상 키 누를 시 스피드 보간? 처리..
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
             {
                 playerSpeed = 1.5f;
@@ -85,7 +91,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-
+        // 마우스 버튼 제어
         if (Input.GetMouseButton(0) && !_isButtonPressed)
         {
             next_velocity = Input.mousePosition;
@@ -102,6 +108,7 @@ public class PlayerMove : MonoBehaviour
         MoveAnimation(_isMove);
     }
 
+    // 이동 애니메이션
     private void MoveAnimation(bool value)
     {
         animator.SetBool("isMove", value);

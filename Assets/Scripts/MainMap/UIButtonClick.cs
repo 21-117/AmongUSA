@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+// UI 버튼 클릭 시 함수 호출
 public class UIButtonClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    float coolTime;
     public void OnPointerEnter(PointerEventData eventData)
     {
         PlayerMove.instance._isButtonPressed = true;
@@ -18,6 +18,7 @@ public class UIButtonClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         PlayerMove.instance._isButtonPressed = false;
     }
 
+    // 플레이어가 NPC 킬
     public void Button_Kill()
     {
         if (Player_Detector.instance.npcsTransforms.Count != 0)
@@ -30,6 +31,7 @@ public class UIButtonClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
+    // 플레이어가 NPC 리폿
     public void Button_Report()
     {
         if (Player_Detector.instance._reportValue)
@@ -38,6 +40,7 @@ public class UIButtonClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
+    // 킬 쿨타임
     public IEnumerator CoolTime()
     {
         this.transform.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.2f);
@@ -48,6 +51,7 @@ public class UIButtonClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         this.transform.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
     }
 
+    // 씬 전환
     public void _EnterMainMap()
     {
         SceneManager.LoadScene(1);

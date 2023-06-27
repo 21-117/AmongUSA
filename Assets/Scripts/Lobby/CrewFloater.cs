@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 메인 로비 플러터 연출 제어 // 베르 유튜브 참고함
 public class CrewFloater : MonoBehaviour
 {
     [SerializeField]
@@ -13,7 +14,6 @@ public class CrewFloater : MonoBehaviour
     private float timer = 0.5f;
     private float distance = 800;
 
-    // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < 12; i++)
@@ -21,8 +21,8 @@ public class CrewFloater : MonoBehaviour
             SpawnFloatingcrew((ChaColors)i, Random.Range(0f, distance));
         }
     }
-
-    // Update is called once per frame
+    
+    // 생성 주기 1초
     void Update()
     {
         timer -= Time.deltaTime;
@@ -45,12 +45,13 @@ public class CrewFloater : MonoBehaviour
             float fSpeed = Random.Range(50f, 200f);
             float rSpeed = Random.Range(-2f, 2f);
 
+            // 크루원 생성 후 랜덤 스폰 위치 생성
             var crew = Instantiate(prefab, spawnPos, Quaternion.identity).GetComponent<FloatingCharacter>();
             crew.SetFloatingCrew(sprites[Random.Range(0, sprites.Count)], chaColor, dir, fSpeed, rSpeed, Random.Range(25f, 75f));
         }
     }
 
-
+    // 콜라이더 닿으면 삭제
     private void OnTriggerExit2D(Collider2D collision)
     {
         var crew = collision.GetComponent<FloatingCharacter>();

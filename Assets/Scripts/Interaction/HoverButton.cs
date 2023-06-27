@@ -17,6 +17,7 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         button.onClick.AddListener(_OnClickedButton);
     }
 
+    // Å¬¸¯
     public void _OnClickedButton()
     {
         audioSource.clip = audioClips[1];

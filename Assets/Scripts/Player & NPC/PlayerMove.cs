@@ -17,7 +17,6 @@ public class PlayerMove : MonoBehaviour
     public bool _isButtonPressed = false, _isKill = false;
     Vector3 velocity, next_velocity;
     public Transform targetTransform;
-
     AudioSource audioSource;
 
     void Awake()
@@ -25,7 +24,6 @@ public class PlayerMove : MonoBehaviour
         if (instance != null) Destroy(instance);
         instance = this;
     }
-
 
     private void Start()
     {
@@ -49,7 +47,6 @@ public class PlayerMove : MonoBehaviour
 
     // Input.GetAxis() 로 처리 시 플레이어가 미끄러지는 느낌이 발생하여 인게임과 다름
     // 따라서 트랜스폼으로 플레이어 이동 제어
-
     public void MovingPlayer()
     {
         _isMove = false;
@@ -101,8 +98,6 @@ public class PlayerMove : MonoBehaviour
             Vector3 dir = (Input.mousePosition - new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f)).normalized;
             transform.position += dir * playerSpeed * Time.deltaTime;
             _isMove = dir.magnitude != 0f;
-
-
         }
 
         MoveAnimation(_isMove);
@@ -113,5 +108,4 @@ public class PlayerMove : MonoBehaviour
     {
         animator.SetBool("isMove", value);
     }
-
 }

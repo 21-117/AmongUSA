@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 지정 포인트로 왕복 하기
-
+// NPC가 정해진 웨이포인트 리스트를 순차적으로 돌기
 public class NPCMove : MonoBehaviour
 {
     public float speed = 1.0f;
@@ -33,10 +32,12 @@ public class NPCMove : MonoBehaviour
     {
         if (isMoving)
         {
+            // 죽기전까진 이동하기
             if (!isDead)
             {
                 Transform wp = waypoints[_currentWaypointIndex];
 
+                // 이동 후 대기시간을 갖고 그 다음 웨이포인트로 이동
                 if (_waiting)
                 {
                     MoveAnimation(false);
@@ -47,6 +48,8 @@ public class NPCMove : MonoBehaviour
 
                     velocity = transform.position;
                     next_velocity = wp.transform.position;
+
+                    // 걷는 방향에 맞게 스프라이트 랜더러 바꿔주기
                     if (velocity.x - next_velocity.x < 0) { _turn = true; spriteRenderer.flipX = false; }
                     else if (velocity.x - next_velocity.x > 0) { _turn = false; spriteRenderer.flipX = true; }
                 }
@@ -55,6 +58,7 @@ public class NPCMove : MonoBehaviour
                     MoveAnimation(true);
                 }
 
+                // 웨이포인트에 다다랐다면 갖고 있는 웨이포인트 리스트 인덱스 증가
                 if (Vector3.Distance(transform.position, wp.position) < 0.01f)
                 {
                     transform.position = wp.position;
@@ -65,12 +69,14 @@ public class NPCMove : MonoBehaviour
                 }
                 else
                 {
+                    // 지정된 웨이포인트로 이동하기
                     transform.position = Vector3.MoveTowards(
                         transform.position,
                         wp.position,
                         speed * Time.deltaTime);
                 }
             }
+            // 죽었다면
             else if (isDead)
             {
                 DyingAnimation(isDead);
@@ -81,10 +87,12 @@ public class NPCMove : MonoBehaviour
         }
     }
 
+    // 걷기
     private void MoveAnimation(bool value)
     {
         animator.SetBool("isMove", value);
     }
+    // 죽는 애니메이션
     private void DyingAnimation(bool value)
     {
         animator.SetBool("isDead", value);
